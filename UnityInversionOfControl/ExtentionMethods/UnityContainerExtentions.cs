@@ -15,7 +15,7 @@ namespace UnityInversionOfControl.ExtentionMethods
     /// <typeparam name="T"></typeparam>
     /// <param name="container"></param>
     /// <returns></returns>
-    public static bool IsRegistered<T>(this IUnityContainer container)
+    public static bool IsRegisteredExt<T>(this IUnityContainer container)
     {
       try
       {

@@ -7,9 +7,6 @@ using System;
 using UnityInversionOfControl.Controllers;
 using Microsoft.Practices.Unity;
 using System.Web.Mvc;
-using System.Web.Routing;
-using System.Web;
-using System.IO;
 
 namespace UnityInversionOfControl.IocControllerTests
 {
@@ -27,6 +24,30 @@ namespace UnityInversionOfControl.IocControllerTests
     public IocControllerTests()
     {
       Bootstrapper.Initialise();
+    }
+
+    /// <summary>
+    /// Test the registrations using an extention
+    /// </summary>
+    [Fact]
+    public void IocTestRegistrations()
+    {
+      bool actual = false;
+
+      actual = IocUnityContainer.Container.IsRegisteredExt<IInsuranceRepository>();
+      Assert.Equal(true, actual);
+
+      actual = IocUnityContainer.Container.IsRegisteredExt<IEmailRepository>();
+      Assert.Equal(true, actual);
+
+      actual = IocUnityContainer.Container.IsRegisteredExt<IUserRepository>();
+      Assert.Equal(true, actual);
+
+      actual = IocUnityContainer.Container.IsRegisteredExt<IDeductibleRepository>();
+      Assert.Equal(true, actual);
+
+      actual = IocUnityContainer.Container.IsRegisteredExt<IUnknownRepository>();
+      Assert.Equal(false, actual);
     }
 
     /// <summary>
